@@ -1,15 +1,11 @@
-# Sort, Map, Filter & Reduce
+# Sort, Map and Filter
 
 
+![](http://i.imgur.com/aaMDoFU.png?1)
 
-> I like turtles. 
+> Language is never neutral. -[Paulo Freire](https://en.wikipedia.org/wiki/Paulo_Freire)
  
 
-
-
-
-
-# Cool Things With Functions
 
 ## Sort
 
@@ -99,7 +95,7 @@ If you begin to type out `.sort` on the instance of an `Array` you will be met w
 
 ![](http://i.imgur.com/vDvcjyk.png?1)
 
-!](https://media.giphy.com/media/l0NwHXQy3kUSfFF60/giphy.gif)
+![](https://media.giphy.com/media/l0NwHXQy3kUSfFF60/giphy.gif)
 
 This is **closure expression syntax**. 
 
@@ -206,8 +202,56 @@ print(newNumbers)
 
 The `filter` function is available on any instance of an Array. 
 
+Similar to the `sort` function, it takes in a function as an argument.
 
+The return type of the `filter ` method is dependent upon the elements that make up the array for which you are calling the `filter` method on. Meaning, if it's an array of `Int`'s that calls the `filter` method, then its return type will be [`Int`] - an array of `Int`'s.
 
+Lets create a constant called `grades` of type [`Int`] assigning it values that represent grades from a classroom.
+
+```swift
+let grades = [74, 92, 84, 50, 21, 50, 90, 100]
+```
+
+If we were to begin to type out the `filter` method available to any instance of an `Array` on this `grades` constant, we would be met with the following:
+
+![](http://i.imgur.com/G1kwW8h.png?1)
+
+The return type is [`Int`] - so calling on this particular instance method will return back to us an array of `Int`'s. The name of this instance method is `filter`, it takes in one argument called `includeElement` of type `(Int) -> Bool`. We know how to read that - it's a function that takes in one argument which is an `Int` and returns a `Bool`. 
+
+This `filter` function will take the function `(Int) -> Bool` we give it and for each element in the array, it will call on our supplied function and only if it returns `true` will it store it in some `Array` (within its implementation) and then return back us that `Array` when it's done going through all of its elements.
+
+Lets try it out.
+
+Here is an function called `isGreaterThan85(_:)` that takes in one argument called `grade` of type `Int` and returns a `Bool`. That matches the `(Int) -> Bool` type to which `filter` is looking for. In our implementation, if the grade passed in is greather than 85, it will return `true`, if not it will return `false`.
+
+```swift
+func isGreaterThan85(grade: Int) -> Bool {
+    return grade > 85
+}
+```
+
+Lets now pass this into the `filter` method.
+
+```swift
+let goodGrades = grades.filter(isGreaterThan85)
+print(goodGrades)
+// prints "[92, 90, 100]"
+```
+
+We can also take advantage of being able to do all of this in-line without having to create a separate function.
+
+```swift
+let goodGrades = grades.filter { (grade: Int) -> Bool in
+    return grade > 85
+}
+
+print(goodGrades)
+// prints "[92, 90, 100]"
+```
+
+Doing it that way eliminates the need for us to create this separate `isGreatherThan85` function. It also becomes more readable (I know at first you might be like.. how is this more readable!) - but it keeps everything very close together so we can see exactly what this `filter` function is doing to create this new `goodGrades` array.
+
+We can also add `print` statements to see when this getting called.
 
 
 <a href='https://learn.co/lessons/MapFilterReduce' data-visibility='hidden'>View this lesson on Learn.co</a>
