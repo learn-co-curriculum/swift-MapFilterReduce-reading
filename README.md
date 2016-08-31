@@ -4,8 +4,17 @@
 ![](http://i.imgur.com/aaMDoFU.png?1)
 
 > Language is never neutral. -[Paulo Freire](https://en.wikipedia.org/wiki/Paulo_Freire)
- 
 
+## Overview
+
+In this lesson, we'll look at functions that you can use with arrays. 
+
+## Learning Objectives
+
+* Create and use the `sort` function 
+* Use the `map` function and explain its return value 
+* Create and use the `filter` function 
+* 
 
 ## Sort
 
