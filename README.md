@@ -120,7 +120,7 @@ greatestHits.sort { (a: String, b: String) -> Bool in
 }
 ```
 
-We're providing this `sort` function with a function that has two arguments of type `String` and a return type of `Bool`. Except there's a few differences. 1- It doesn't have a name. There's no name to this function, we're defining it right in-line and passing it along to the `sort` function. Also, what's with that `in` keyword. That is the separation between the parameters and the actual implementation  and use of those parameters. Think of it as the curly braces `{ }` when you create a function as you normally have in the past.
+We're providing this `sort` function with a function that has two arguments of type `String` and a return type of `Bool`. Except there's a few differences. 1- It doesn't have a name. There's no name to this function, we're defining it right in-line and passing it along to the `sort` function. Also, what's with that `in` keyword? That is the separation between the parameters and the actual implementation and use of those parameters. It can be helpful to think of those parameters getting used `in` the code which follows them. The code which comes after `in` is just like the code within the curly braces `{ }` of functions you've written in the past.
 
 
 ## Map
