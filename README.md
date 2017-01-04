@@ -14,7 +14,19 @@ In this lesson, we'll look at functions that you can use with arrays.
 * Create and use the `sort` function 
 * Use the `map` function and explain its return value 
 * Create and use the `filter` function 
-* 
+
+
+## Videos
+
+**Map**:
+
+[![Map](http://img.youtube.com/vi/Q3wfJCfxhnw/0.jpg)](https://www.youtube.com/watch?v=Q3wfJCfxhnw "Map")
+
+**Filter and Reduce**:
+
+[![F](http://img.youtube.com/vi/ievEyDNq2WU/0.jpg)](https://www.youtube.com/watch?v=ievEyDNq2WU "F")
+
+
 
 ## Sort
 
