@@ -274,5 +274,54 @@ Doing it that way eliminates the need for us to create this separate `isGreather
 
 We can also add `print` statements to see when this getting called.
 
+## Reduce
+
+A Song of Ice and Fire is considered one of the greatest stories ever told (and it's not done being told!). Most of you might refer to this series as "Game of Thrones" which has become a very popular TV show on HBO.
+
+![](http://i.imgur.com/BURdUwq.jpg?1)
+
+As it currently stands (as of Jan. 4th, 2017), there are five books in the series. Five books with _a lot_ of pages. What do pages have?.. words! There are a LOT of words in this series. Lets break it down per book:
+
+* A Game of Thrones: 298,000
+* A Clash of Kings: 326,000
+* A Storm of Swords: 424,000
+* A Feast for Crows: 300,000
+* A Dance with Dragons: 422,000
+
+Lets throw these figures into an `Array`.
+
+```swift
+let wordsPerBook = [298000, 326000, 424000, 300000, 422000]
+```
+
+If we wanted to calculate the _total_ amount of words in the entire series, we could do something like this:
+
+```swift
+var total = 0
+
+for words in wordsPerBook {
+    total += words
+}
+
+print(total)
+// Prints 1770000
+```
+
+That's a lot of words, nearly 2 million. According to George R.R. Martin, there's two books left in the series which will definitely put us over 2 million words. I remember finding a hard time writing 250 words for an essay due in high school.
+
+Notice how we created an initial starting point for us here, with a variable `total` with an initial value of 0. `total` here is a variable of type `Int`. Next, we created a for-in loop which is looping through our `wordsPerBook` `Array`. Each time through this for-in loop, we are increasing our `total` variable by the value of `words` (in its current iteration). It will iterate through this `Array` 5 times. When its done going through this for-in loop, we're printing our `total` variable which prints `1770000` to the console.
+
+Starting with an `Array` which contains multiple values (like our example above), and ending with _one_ value (like our example above) where we get down to this one value by iterating through an `Array` is something you might come across when creating your application.
+
+It's common enough to where Apple has a method available to `Array`s similar to the methods you were exposed to in this reading above.
+
+This method is `reduce`. The method signature is `reduce(_:_:)` as it takes in two arguments. It also returns back a value. At first glance, it seems as if there's a lot going on with this method.
+
+If we were to command click the `reduce(_:_:)` method in our Playground file, we would be met with the following:
+
+![](https://s3.amazonaws.com/learn-verified/ReduceScreenF.png)
+
+Woah, that is some method signature. Don't be too freaked out by it, we will break it down.
+
 
 <a href='https://learn.co/lessons/MapFilterReduce' data-visibility='hidden'>View this lesson on Learn.co</a>
