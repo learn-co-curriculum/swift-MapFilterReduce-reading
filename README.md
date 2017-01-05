@@ -30,7 +30,7 @@ In this lesson, we'll look at functions that you can use with arrays.
 
 ## Sort
 
-Who doesn't love Neil Diamond? 
+Who doesn't love Neil Diamond? A pre-requisite to this lesson might sound a little crazy, but it's a must. Put some headphones on and listen to some of Neil Diamonds greatest hits. You can start with [Soolaimon](https://itun.es/us/-oOkgb?i=1177192316) if you like. But this is a requirement as you read through this reading. Feel free to exit your chair and dance a little (the dancing part isn't a requirement). 
 
 ![](http://i.imgur.com/DfLfkKf.png?1)
 
@@ -322,6 +322,70 @@ If we were to command click the `reduce(_:_:)` method in our Playground file, we
 ![](https://s3.amazonaws.com/learn-verified/ReduceScreenF.png)
 
 Woah, that is some method signature. Don't be too freaked out by it, we will break it down.
+
+The word `Result` here is a generic type. Meaning, it can be _anything_. It's not a specific type (yet). But when we choose what the type of `Result` should be (when we call on this method), wherever we see the `Result` word, it needs to all be replaced with the same type. What does that mean? If we decide to to replace the word `Result` with the type `Int` then everywhere we see the word `Result`, it needs to be replaced with the `Int` type, we can't have one `Result` word be the type `Int` and the other `Double`. They need to match.
+
+A lot of words. But stay focused, we're almost there. How do we replace the word `Result` as it's being used here (which is four times) with a type. Well, the compiler is able to infer the type we want to use and will replace this word automatically for us. Here's an example:
+
+```swift
+let sum = wordsPerBook.reduce(0, { (runningTotal: Int, next: Int) in
+    
+    print("runningTotal: \(runningTotal)")
+    
+    print("next: \(next)")
+    
+    return runningTotal + next
+
+})
+
+/* Prints
+ runningTotal: 0
+ next: 298000
+ 
+ 
+ runningTotal: 298000
+ next: 326000
+ 
+ 
+ runningTotal: 624000
+ next: 424000
+ 
+ 
+ runningTotal: 1048000
+ next: 300000
+ 
+ 
+ runningTotal: 1348000
+ next: 422000
+ */
+```
+
+The first argument we provided to this method is the `Int` value 0. The next argument we provided to this method is _another_ method. Using trailing closure syntax, we're passing the following function along as an argument:
+
+```swift
+{ (runningTotal: Int, next: Int) in
+    
+    print("runningTotal: \(runningTotal)")
+    
+    print("next: \(next)")
+    
+    return runningTotal + next
+
+}
+```
+
+This anonymous function we've created doesn't have a name. It takes in two arguments and returns a value. The type of this function we have to pass to it is (`Result`, `Element`) -> `Result`. Since we've already established that the first argument of the `reduce` function is of type `Int` (because we've given it the number 0). That means that wherever we see the word `Result`, it is instead now of type `Int`. And `Element` represents the type of the elements within the `Array` we're calling this method on. The type of the elements in the `Array` we're calling this `reduce` method on are _also_ of type `Int`. Which means the type of this method we need to pass along to the `reduce` method is of type: (`Int`, `Int`) -> `Int. This matches what we did above! Know that when creating an anonymous function using trailing closure syntax, we don't need to specify the types nor the return type.
+
+OK. So we understand that this `reduce` method is given two things. When called on, we're giving it the value 0 and a function which (besides the two print statements) returns back `runningTotal` + `next` which are the names of the two arguments of the function we're handing over to `reduce`.
+
+`reduce` takes these two items and does something with it. As you can see, it's calling on the anonymous function we give to it over and over. If you step through the print statements, you can see _exactly_ what the `reduce` function is doing with it. It's first calling on the method we give it, passing in the initial value (which is the 0) and then the first element in the `Array` which `reduce` is being called on. Our method adds these two items together then it returns it. Then you can see that our method gets called again, this time the `runningTotal` variable is now equal to what was just returned prior (the value being 298000). The `next` variable is now equal to the second item in the `Array`. This process continues until it iterates through the entire `Array`.
+
+As you can see this works exactly as our prior version before. One advantage to doing it this way is that we can use the `let` keyword to have `sum` be a constant that can _never_ be changed. In our prior example, `total` had to be a variable (declared with the `var` keyword) thus making it mutable. 
+
+It's not easy just reading how a function like this works. You need to test it out by writing your own code. Open up a playground file and make an attempt at calling on `reduce` on your own `Array` instance. In doing so, it should click for you. Also, watch the video I have linked above which walks you through how `reduce` works.
+
+
+
 
 
 <a href='https://learn.co/lessons/MapFilterReduce' data-visibility='hidden'>View this lesson on Learn.co</a>
